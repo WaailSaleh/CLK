@@ -1,0 +1,56 @@
+{
+  "Students": {
+    "StudentID": 12345678,
+    "Student": "Alice",
+    "Program": "compsci"
+  },
+  "Quizzes": {
+    "QuizID": 1234,
+    "CourseID": 1234,
+    "StudentID": 12345678,
+    "Result": 2,
+    "Title": "Bootynomics"
+  },
+  "Questions": {
+    "QuestionID": 12345678,
+    "QuizID": 1234,
+    "CourseID": 1234,
+    "Text": "20 over 5",
+    "one": "three",
+    "two": "five",
+    "three": "weed",
+    "four": "four",
+    "Correct": "option4"
+  },
+  "Answer": {
+    "QuestionID": 12345678,
+    "QuizID": 1234,
+    "StudentID": 12345678,
+    "RIGHT": true
+  },
+  "Courses": {
+    "CourseID": 1234,
+    "QuizID": 1234,
+    "StudentID": 12345678,
+    "Student": "mrs",
+    "Teacher": "sdfs",
+    "School": "place",
+    "Code": "cps406",
+    "Title": "test"
+  },
+  "courseList": {
+    "CourseID": 406,
+    "Title": "MR",
+    "Teacher": "TEST"
+  },
+  "QuizList": {
+    "QuizID": 0,
+    "Code": 406,
+    "Title": "Bootynomics",
+    "Total": 5,
+    "weight": 1,
+    "Time": 10,
+    "Redo": true,
+    "Running": false
+  }
+}

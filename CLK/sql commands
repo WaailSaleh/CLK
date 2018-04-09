@@ -1,0 +1,108 @@
+CREATE TABLE CourseList(
+   CourseID INTEGER  NOT NULL PRIMARY KEY 
+  ,Title    VARCHAR(25) NOT NULL
+  ,Teacher  VARCHAR(25) NOT NULL
+);
+INSERT INTO CourseList(CourseID,Title,Teacher) VALUES (406,'MR','TEST');
+
+CREATE TABLE Students(
+  StudentID INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  Student VARCHAR(25) NOT NULL,
+  Program VARCHAR(25) NOT NULL
+);
+INSERT INTO Students(Student,Program) Values ('Waail','compsci');
+
+CREATE TABLE Courses(
+  CourseID INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ 
+  StudentId INTEGER NOT NULL,
+  FOREIGN KEY (StudentId) REFERENCES Students(StudentID),
+  Student VARCHAR(25) NOT NULL,
+  Teacher VARCHAR(25) NOT NULL,
+  School VARCHAR(25) NOT NULL,
+  Code INTEGER NOT NULL,
+  FOREIGN KEY (Code) REFERENCES CourseList(CourseID),
+  Title VARCHAR(25) NOT NULL
+);
+INSERT INTO Courses(StudentID,Student,Teacher,School,Code,Title) VALUES (1,'mrs','sdfs','place',406,'test');
+CREATE TABLE Quizzes(
+  QuizID INTEGER NOT NULL,
+  FOREIGN KEY (QuizID) REFERENCES QuizList(QuizID),
+  Code INTEGER NOT NULL,
+  StudentId INTEGER NOT NULL,
+  FOREIGN KEY (StudentId) REFERENCES Students(StudentID),
+  Total INTEGER NOT NULL,
+  Result INTEGER NOT NULL,
+  Title VARCHAR(25) NOT NULL,
+  Redo BOOLEAN NOT NULL,
+  Running BOOLEAN NOT NULL,
+
+);
+INSERT INTO Quizzes(Code,StudentID,Total,Result,Title,Redo,Running) VALUES (406,1,5,2,'Bootynomics',true,true);
+CREATE TABLE Questions(
+  QuestionID INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
+  QuizID INTEGER NOT NULL,
+  FOREIGN KEY (QuizID) REFERENCES Quizzes(QuizID),
+  Code INTEGER NOT NULL,
+  Text VARCHAR(250) NOT NULL,
+  one VARCHAR(50) NOT NULL,
+  two VARCHAR(50) NOT NULL,
+  three VARCHAR(50) NOT NULL,
+  four VARCHAR(50) NOT NULL,
+  Correct VARCHAR(50) NOT NULL
+);
+INSERT INTO
+  Questions(
+    QuizID,
+    Code,
+    Text,
+    one,
+    two,
+    three,
+    four,
+    Correct
+  )
+VALUES
+  (
+    1,
+    406,
+    '20 over 5',
+    'three',
+    'five',
+    'weed',
+    'four',
+    'option4'
+  );
+  CREATE TABLE Answers(
+  AnswerID INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  QuestionID INTEGER NOT NULL UNIQUE,
+  FOREIGN KEY (QuestionID) REFERENCES Questions(QuestionID),
+  QuizID INTEGER NOT NULL,
+  FOREIGN KEY (QuizID) REFERENCES Quizzes(QuizID),
+  StudentID INTEGER NOT NULL,
+  FOREIGN KEY (StudentId) REFERENCES Students(StudentID),
+  Correct BOOLEAN NOT NULL
+);
+INSERT INTO
+  Answers(QuestionID, QuizID, StudentID, Correct)
+VALUES
+  (1, 1, 1, true);
+
+CREATE TABLE QuizList(
+   QuizID  INTEGER  NOT NULL PRIMARY KEY AUTO_INCREMENT
+  ,Code    INTEGER  NOT NULL
+  ,FOREIGN KEY (Code) REFERENCES CourseList(CourseID)
+  ,Title   VARCHAR(11) NOT NULL
+  ,Total   INTEGER  NOT NULL
+  ,weight  INTEGER  NOT NULL
+  ,Time    INTEGER  NOT NULL
+  ,Redo    BOOLEAN  NOT NULL
+  ,Running BOOLEAN  NOT NULL
+);
+INSERT INTO QuizList(Code,Title,Total,weight,Time,Redo,Running) VALUES (406,'Bootynomics',5,1,10,true,false);
+
+ALTER TABLE Quizzes
+DROP PRIMARY KEY;
+
+ALTER TABLE Quizzes
+ADD FOREIGN KEY (QuizID) REFERENCES QuizList(QuizID);

@@ -1,0 +1,29 @@
+<?php 
+ class Quizzes {
+	var $QuizID;
+	var $Code;
+    var $StudentID;
+    var $Total ;
+    var $Result;
+    var $Title ;
+    
+	var function __construct(
+	$QuizID,
+	$Code,
+    $StudentID,
+    $Total ,
+    $Result,
+    $Title,
+
+	) 
+    {
+	$this->QuizID = $QuizID;
+	$this->Code = $Code;
+	$this->StudentID =  $StudentID;    
+	$this->Total = $Total;  
+	$this->Result = $Result;
+	$this->Title = $Title;    
+  
+	}
+}
+?>
